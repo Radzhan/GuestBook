@@ -8,7 +8,7 @@ const categoryRouter = express.Router();
 categoryRouter.post("/", async (req, res) => {
   if (!req.body.name) {
     console.log(req.body.name);
-    return res.status(400).send({ eror: "Name are required" });
+    return res.status(400).send({ error: "Name are required" });
   }
 
   const categoryData = {

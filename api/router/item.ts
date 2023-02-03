@@ -9,7 +9,7 @@ itemRouter.post("/", imagesUpload.single("image"), async (req, res) => {
   if (!req.body.name || !req.body.category_id || !req.body.location_id) {
     return res
       .status(400)
-      .send({ error: "name , category_id and location_id are reqired" });
+      .send({ error: "name , category_id and location_id are required" });
   }
 
   const itemData = {
@@ -64,9 +64,8 @@ itemRouter.get("/", async (req, res) => {
 
 itemRouter.delete("/:id", async (req, res) => {
   const connection = mysqlDb.getConnection();
-  await connection.query("DELETE FROM object WHERE id = ?", [
-    req.params.id,
-  ]);
+  await connection.query("DELETE FROM object WHERE id = ?", [req.params.id]);
+  res.send("item was delete");
 });
 
 export default itemRouter;
