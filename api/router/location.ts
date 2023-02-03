@@ -30,7 +30,7 @@ locationRouter.post('/', async (req , res) => {
 
 locationRouter.get('/', async (req, res) => {
     const connection = mysqlDb.getConnection();
-    const result = await connection.query('SELECT id and name FROM location');
+    const result = await connection.query('SELECT id , name FROM location');
     const item = result[0];
     res.send(item);
 })

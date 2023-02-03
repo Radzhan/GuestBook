@@ -7,7 +7,7 @@ import { Item } from '../types';
 const itemRouter = express.Router();
 
 itemRouter.post('/', imagesUpload.single('image'), async (req, res) => {
-    if (!req.body.name || req.body.category_id || req.body.location_id) {
+    if (!req.body.name || !req.body.category_id || !req.body.location_id) {
         return res.status(400).send({ eror: 'name , category_id and location_id are reqired' });
     }
 
@@ -24,6 +24,7 @@ itemRouter.post('/', imagesUpload.single('image'), async (req, res) => {
         , [itemData.name, itemData.category_id, itemData.location_id, itemData.description, itemData.image]
     );
 
+
     const info = result[0] as OkPacket;
 
     res.send({
@@ -33,7 +34,7 @@ itemRouter.post('/', imagesUpload.single('image'), async (req, res) => {
 });
 itemRouter.get('/', async (req, res) => {
     const connection = mysqlDb.getConnection();
-    const result = await connection.query('SELECT id and name and category_id and location_id FROM object');
+    const result = await connection.query('SELECT id , name , category_id , location_id FROM object');
     const item = result[0];
     res.send(item);
 })

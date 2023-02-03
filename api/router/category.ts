@@ -31,7 +31,7 @@ categoryRouter.post('/', async (req , res) => {
 
 categoryRouter.get('/', async (req, res) => {
     const connection = mysqlDb.getConnection();
-    const result = await connection.query('SELECT id and name FROM categories');
+    const result = await connection.query('SELECT id , name FROM categories');
     const item = result[0];
     res.send(item);
 })
