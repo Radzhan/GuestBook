@@ -1,11 +1,11 @@
-create schema Ofice collate utf8mb3_general_ci;
+create schema Office collate utf8mb3_general_ci;
 
-create table `location`
+create table location
 (
     id                        int auto_increment,
     name                      varchar(200) not null,
-    `description of location` text         null,
-    constraint `location _pk`
+    description               text         null,
+    constraint location_pk
         primary key (id)
 );
 
@@ -51,3 +51,13 @@ alter table object
     add constraint object_location_id_fk
         foreign key (location_id) references location (id)
             on update cascade;
+            
+alter table object
+    modify category_id int not null;
+
+alter table object
+    modify location_id int not null;
+
+INSERT INTO categories (id, name, description) VALUES (1, 'test' , 'description for test categories');
+INSERT INTO location (id, name, description) VALUES (1, 'test' , 'description for test location');
+INSERT INTO object (id, name, description, category_id, location_id) VALUES (1, 'test' , 'description for test object', '1', '1');
