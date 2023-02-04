@@ -1,5 +1,7 @@
 create schema Office collate utf8mb3_general_ci;
 
+use Office;
+
 create table location
 (
     id                        int auto_increment,

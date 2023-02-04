@@ -61,7 +61,7 @@ categoryRouter.delete("/:id", async (req, res) => {
   if (item.affectedRows === 0) {
     return res.send("incorrect category");
   } else {
-    return res.send('category was delete')
+    return res.send('category was delete');
   }
 });
 
